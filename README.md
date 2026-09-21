@@ -1,1 +1,1 @@
-# CS-4342-Project
+# Sentiment to Stars
