@@ -1,0 +1,124 @@
+.navBar {
+    width: 100%;
+    height: 7.5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #76A5AF;
+    color: #fff;
+}
+
+.titleStar {
+    font-size: 18px;
+}
+
+.inputSection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    align-items: center;
+    /* justify-content: center; */
+
+    width: 60%;
+}
+
+.inputLabel {
+    font-size: 32px;
+    font-weight: 500;
+    color: #2D6570;
+}
+
+.textInput {
+    width: 600px;
+    height: fit-content;
+    min-height: 256px;
+    min-width: 100%;
+    max-width: 100%;
+    text-align: left;
+
+    border-radius: 10px;
+    /* border: solid 3px #76A5AF; */
+    border: solid 3px #76A5AF;
+    color: #548592;
+
+    padding: 8px;
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
+}
+
+.submitButton {
+    width: 164px;
+    height: 56px;
+
+    border-radius: 10px;
+    border: solid 3px #76A5AF;/*#9EBFC7;*/
+    /* background-color: #d8e6ea; */
+    background-color: #fde1a0;
+
+    font-family: var(--league-spartan);
+    font-weight: 600;
+    font-size: 20px;
+    /* color: #2D6570; */
+    color: #548592;
+
+}
+
+.submitButton:hover {
+    filter: brightness(0.95);
+    cursor: pointer;
+}
+
+
+
+.starHolder {
+    position: relative;
+    width: 64px;
+    height: 64px;
+}
+
+.starOutline {
+    position: absolute;
+    /* max-width: 100%;
+    height: auto; */
+    font-size: 56px;
+    color: #e7b851;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    transition: all 0.3s;
+}
+
+.starFill {
+    position: absolute;
+    /* max-width: 80%;
+    height: auto; */
+    font-size: 56px;
+    /* color: #fde1a0; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+
+.numericalRating {
+    font-size: 42px;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    color: #2D6570;
+    margin-bottom: 56px;
+}
