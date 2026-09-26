@@ -1,7 +1,18 @@
-from tokenizers import Tokenizer, Encoding
+import re
+from tokenizers import Tokenizer
 from tokenizers.models import BPE
 from tokenizers.trainers import BpeTrainer
 from tokenizers.pre_tokenizers import Whitespace
+
+amazon_links = r'https?://(?:[a-z0-9-]+\.)*amazon\.[a-z.]{2,6}/(?:[^/\s]+/)?(?:dp|gp/(?:product|aw/d))/[A-Z0-9]{10}(?:[/?].*)?'
+edits_or_unecessary = r'-{7,}.*?-{7,}|>{2,}'
+html_tags = r'<[^>]{0,8}>'
+malformed_less_sign = r'&lt;'
+malformed_greater_sign = r'&gt;'
+a_tags = r'<a\b[^>]*>(.*?)</a>'
+remove_pattern = re.compile('|'.join([amazon_links, edits_or_unecessary, malformed_less_sign, malformed_greater_sign, a_tags, html_tags]), re.IGNORECASE)
+excessive_hyphens = r'-{3,6}'
+tokenizer = Tokenizer.from_file("tokenizer.json")
 
 def train_tokenizer(file_path: str):
     """
@@ -17,9 +28,10 @@ def tokenize(input: str) -> list[int]:
     """
     Tokenizes some input
     """
-    tokenizer = Tokenizer.from_file("tokenizer.json")
+    input = re.sub(pattern=remove_pattern, repl='', string=input)
+    input = re.sub(pattern=excessive_hyphens, repl='--', string=input).strip('"')
     return tokenizer.encode(input).ids
 
 if __name__ == "__main__":
-    #train_tokenizer("vocab.txt")
+    #train_tokenizer("vocab2.txt")
     print(tokenize("Hello, I am a human."))
