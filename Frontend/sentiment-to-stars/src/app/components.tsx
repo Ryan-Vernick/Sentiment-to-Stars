@@ -3,7 +3,7 @@
 import React from "react"
 import { useState } from "react";
 
-import styles from "./text_input.module.css";
+import styles from "./components.module.css";
 import { appStateType } from "./page";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

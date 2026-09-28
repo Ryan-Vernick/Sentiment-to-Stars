@@ -1,7 +1,7 @@
 'use client'
 
 import styles from "./page.module.css";
-import TextInput, { DisplayStars, NavBar, SubmitReview } from "./text_input";
+import TextInput, { DisplayStars, NavBar, SubmitReview } from "./components";
 
 import '@fontsource-variable/league-spartan';
 import { useState } from "react";
