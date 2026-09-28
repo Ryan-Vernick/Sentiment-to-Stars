@@ -6,10 +6,11 @@
     justify-content: center;
     background-color: #76A5AF;
     color: #fff;
+    font-size: 18px;
 }
 
 .titleStar {
-    font-size: 18px;
+    font-size: 21px;
 }
 
 .inputSection {
@@ -56,7 +57,7 @@
     border-radius: 10px;
     border: solid 3px #76A5AF;/*#9EBFC7;*/
     /* background-color: #d8e6ea; */
-    background-color: #fde1a0;
+    background-color: #fae1a8;
 
     font-family: var(--league-spartan);
     font-weight: 600;
@@ -112,6 +113,25 @@
 
 .numericalRating {
     font-size: 42px;
+}
+
+.scaleInput {
+    field-sizing: content;
+    min-width: 0.75em;
+    border-radius: 8px;
+    padding: 6px 0 0 4px;
+    margin-left: 1px;
+    border: solid 2px #cfe0e4 ;
+    font: var(--league-spartan);
+    font-size: 40px;
+    color: #2D6570;
+
+    display: inline-flex; 
+    align-items: center;
+}
+
+.scaleInput:hover {
+    border: solid 2px #76A5AF;
 }
 
 .results {

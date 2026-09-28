@@ -9,6 +9,7 @@ import { useState } from "react";
 export type appStateType = {
   numStars: number;
   scale: number;
+  setScale: (v: number) => void;
   reviewInput: string;
   setReviewInput: (v: string) => void;
   computedRating: number | null;
@@ -17,13 +18,14 @@ export type appStateType = {
 
 export default function Home() {
   const [numStars, setNumStars] = useState<number>(5);
-  const [scale, setScale] = useState<number>(10);
+  const [scale, setScale] = useState<number>(numStars);
   const [reviewInput, setReviewInput] = useState<string>('');
   const [computedRating, setComputedRating] = useState<number | null>(null);
 
   const appState: appStateType = {
     numStars,
     scale,
+    setScale,
     reviewInput,
     setReviewInput,
     computedRating,
