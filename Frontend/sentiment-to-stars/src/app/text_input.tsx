@@ -33,7 +33,7 @@ export function SubmitReview({appState}: {appState: appStateType}) {
     const calculateRating = () => {
         if (reviewText.length > 0) {
             //use our ML algorithm on the review text
-            setComputedRating(1) // 1 is a placeholder for the result
+            setComputedRating(0.95) // 1 is a placeholder for the result
         } else {
             setComputedRating(null)
         }
@@ -62,8 +62,8 @@ export function DisplayStars({appState}: {appState: appStateType}) {
     const scale = appState.scale
     const setScale = appState.setScale
     const computedRating = appState.computedRating
-    const numericalRating = computedRating ? computedRating * scale : 0
-    const numFilled = computedRating ? numericalRating * numStars / scale : numStars
+    const numericalRating = computedRating ? Math.round((computedRating * scale) * 2) / 2 : 0
+    const numFilled = computedRating ? computedRating * numStars : numStars
     let fillLeft = numFilled
 
     const stars = []
