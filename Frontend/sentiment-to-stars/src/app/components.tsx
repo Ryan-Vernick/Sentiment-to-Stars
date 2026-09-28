@@ -50,7 +50,7 @@ export function OneStar({fillLevel, computedRating}: {fillLevel: number, compute
     return (
         <div className={styles.starHolder}>
             <FontAwesomeIcon className={styles.starFill} icon={fasStar} style={{color: computedRating ? '#fde1a0' : '#f2f2f2', clipPath: fillLevel < 1 ? `inset(0 ${clipPercentage} 0 0)` : ''}} />
-            <FontAwesomeIcon className={styles.starOutline} icon={farStar} style={{color: computedRating ? '#e7b851' : '#929292'}} />
+            <FontAwesomeIcon className={styles.starOutline} icon={farStar} style={{color: computedRating ? '#e7b851' : '#aeaeae'}} />
             {/* <img className={styles.starFill} src='/star-fill.svg' style={{clipPath: fillLevel < 1 ? `inset(0 ${clipPercentage} 0 0)` : ''}}/>
             <img className={styles.starOutline} src='/star-outline.svg'/> */}
         </div>

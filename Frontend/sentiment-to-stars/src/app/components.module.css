@@ -26,7 +26,7 @@
 }
 
 .inputLabel {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 500;
     color: #2D6570;
 }
@@ -52,24 +52,30 @@
 }
 
 .submitButton {
-    width: 164px;
-    height: 56px;
+    width: fit-content;
+    /* height: 64px; */
+
+    padding: 16px 12px;
 
     border-radius: 10px;
-    border: solid 3px #76A5AF;/*#9EBFC7;*/
+    border: solid 3px #e7b851;/*#9EBFC7;*/
     /* background-color: #d8e6ea; */
     background-color: #fae1a8;
 
     font-family: var(--league-spartan);
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.1;
     /* color: #2D6570; */
-    color: #548592;
+    color: #3094af;
+
+    transition: all 0.3s
 
 }
 
 .submitButton:hover {
-    filter: brightness(0.95);
+    filter: contrast(0.95);
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -90,7 +96,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .starFill {
@@ -98,11 +104,11 @@
     /* max-width: 80%;
     height: auto; */
     font-size: 56px;
-    /* color: #fde1a0; */
+    color: #fde1a0;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.3s;
+    transition: all 0.5s;
 }
 
 .stars {
@@ -120,7 +126,7 @@
     field-sizing: content;
     min-width: 0.75em;
     border-radius: 8px;
-    padding: 6px 0 0 4px;
+    padding: 4px 0 0 4px;
     margin-left: 1px;
     border: solid 2px #cfe0e4 ;
     font: var(--league-spartan);
@@ -129,6 +135,8 @@
 
     display: inline-flex; 
     align-items: center;
+
+    transition: border 0.25s;
 }
 
 .scaleInput:hover {
@@ -138,8 +146,8 @@
 .results {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     align-items: center;
     color: #2D6570;
-    margin-bottom: 56px;
+    margin-bottom: 48px;
 }
