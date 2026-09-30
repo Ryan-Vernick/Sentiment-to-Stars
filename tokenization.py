@@ -34,4 +34,4 @@ def tokenize(input: str) -> list[int]:
 
 if __name__ == "__main__":
     #train_tokenizer("vocab2.txt")
-    print(tokenize("Hello, I am a human."))
+    print(tokenize("Simply awful product if you are familiar with Sunsweet or other domestic brands.  I don't really care if they came from Al Sharpton's basement, they taste stale, colorless, not tangy like an apricot... OMG.  I write a lot of positive food reviews here and there is nothing to say about these.  I suppose if you were a very dedicated veg that you could mix them with some normal Sunsweet apricots and get them down.  I'm going to find a way to use them as a door stop.  Save your money, there's lot's of other brands of apricots on here including Newmans Own."))
