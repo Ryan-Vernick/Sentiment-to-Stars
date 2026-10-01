@@ -17,14 +17,14 @@ for epoch in range(num_epochs):
     epoch_loss = 0
     for tokens, score in train_loader:
         outputs = modell(tokens)
-        loss = criterion(outputs, score)
+        loss = criterion(outputs, score/5.0)
         
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
         
         epoch_loss += loss.item()
-        print(f'Batch Loss: {loss.item():.4f}')
+        print(f'{batch_counter}: Batch Loss: {loss.item():.4f}')
         batch_counter += 1
     
     print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {epoch_loss / len(train_loader):.4f}')
