@@ -1,7 +1,21 @@
 {
   "version": "1.0",
-  "truncation": null,
-  "padding": null,
+  "truncation": {
+    "direction": "Right",
+    "max_length": 2500,
+    "strategy": "LongestFirst",
+    "stride": 0
+  },
+  "padding": {
+    "strategy": {
+      "Fixed": 2500
+    },
+    "direction": "Right",
+    "pad_to_multiple_of": null,
+    "pad_id": 3,
+    "pad_type_id": 0,
+    "pad_token": "[PAD]"
+  },
   "added_tokens": [
     {
       "id": 0,
@@ -53,7 +67,48 @@
   "pre_tokenizer": {
     "type": "Whitespace"
   },
-  "post_processor": null,
+  "post_processor": {
+    "type": "TemplateProcessing",
+    "single": [
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "SpecialToken": {
+          "id": "[SEP]",
+          "type_id": 0
+        }
+      }
+    ],
+    "pair": [
+      {
+        "Sequence": {
+          "id": "A",
+          "type_id": 0
+        }
+      },
+      {
+        "Sequence": {
+          "id": "B",
+          "type_id": 1
+        }
+      }
+    ],
+    "special_tokens": {
+      "[SEP]": {
+        "id": "[SEP]",
+        "ids": [
+          2
+        ],
+        "tokens": [
+          "[SEP]"
+        ]
+      }
+    }
+  },
   "decoder": null,
   "model": {
     "type": "BPE",

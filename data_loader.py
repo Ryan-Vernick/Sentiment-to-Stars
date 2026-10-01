@@ -28,12 +28,6 @@ class SentimentDataset(Dataset):
         score = self.score[idx]
         return torch.tensor(tokens, dtype=torch.long), torch.tensor(score, dtype=torch.float)
 
-for dict in train_data:
-    dict['Tokens'] = pad(dict['Tokens'])
-
-for dict in test_data:
-    dict['Tokens'] = pad(dict['Tokens'])
-
 train_dataset = SentimentDataset(train_data)
 test_dataset = SentimentDataset(test_data)
 
