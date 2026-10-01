@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 from tokenizers import Tokenizer
 from tokenizers.models import BPE
 from tokenizers.trainers import BpeTrainer
@@ -13,7 +14,8 @@ malformed_greater_sign = r'&gt;'
 a_tags = r'<a\b[^>]*>(.*?)</a>'
 remove_pattern = re.compile('|'.join([amazon_links, edits_or_unecessary, malformed_less_sign, malformed_greater_sign, a_tags, html_tags]), re.IGNORECASE)
 excessive_hyphens = r'-{3,6}'
-tokenizer = Tokenizer.from_file("tokenizer.json")
+# tokenizer = Tokenizer.from_file("tokenizer.json")
+tokenizer = Tokenizer.from_file(str(Path(__file__).resolve().with_name("tokenizer.json")))
 
 def train_tokenizer(file_path: str):
     """
