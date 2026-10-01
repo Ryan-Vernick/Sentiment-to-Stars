@@ -2,6 +2,8 @@ import RNN_training
 import torch
 from data_loader import test_loader
 from RNN_training import modell
+from joblib import Parallel, delayed
+import joblib
 
 modell.eval()
 correct = 0
@@ -15,3 +17,6 @@ with torch.no_grad():
 
 accuracy = 100 * correct / total
 print(f'Accuracy: {accuracy:.2f}%')
+
+# Save the model as a pickle in a file
+joblib.dump(modell, 'currentModel.pkl')
