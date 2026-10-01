@@ -20,8 +20,7 @@ def predict():
     if not isinstance(user_input, str) or not user_input.strip():
         return jsonify({'error': 'Enter review text before generating a rating.'}), 400
 
-    token_ids = tokenize(user_input)[:2475]
-    token_ids.extend([0] * (2475 - len(token_ids)))
+    token_ids = tokenize(user_input)
     model_input = torch.tensor([token_ids], dtype=torch.long)
 
     with torch.inference_mode():

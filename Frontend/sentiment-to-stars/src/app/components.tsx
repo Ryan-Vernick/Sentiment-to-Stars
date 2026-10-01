@@ -30,16 +30,51 @@ export default function TextInput({appState}: {appState: appStateType}) {
 export function SubmitReview({appState}: {appState: appStateType}) {
     const reviewText = appState.reviewInput
     const setComputedRating = appState.setComputedRating
-    const calculateRating = () => {
-        if (reviewText.length > 0) {
-            //use our ML algorithm on the review text
-            setComputedRating(0.95) // 1 is a placeholder for the result
-        } else {
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+
+    // Function called on button click
+    const handlePredict = async () => {
+        if (!reviewText.trim()) {
             setComputedRating(null)
+            setError('Enter review text before generating a rating.')
+            return
+        }
+
+        setIsLoading(true)
+        setError(null)
+        try {
+            const response = await fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ input_value: reviewText }),
+            })
+
+            const data = await response.json()
+            if (!response.ok) {
+                throw new Error(data.error ?? 'The rating request failed.')
+            }
+            if (typeof data.result !== 'number' || !Number.isFinite(data.result)) {
+                throw new Error('The model returned an invalid rating.')
+            }
+            setComputedRating(data.result)
+        } catch (error) {
+            console.error('Error connecting to ML backend:', error)
+            setComputedRating(null)
+            setError(error instanceof Error ? error.message : 'Could not connect to the model.')
+        } finally {
+            setIsLoading(false)
         }
     }
     return (
-        <button type="button" className={styles.submitButton} onClick={calculateRating}>Generate Rating</button>
+        <>
+            <button type="button" className={styles.submitButton} onClick={handlePredict} disabled={isLoading}>
+                {isLoading ? 'Generating...' : 'Generate Rating'}
+            </button>
+            {error && <p role="alert">{error}</p>}
+        </>
     )
 }
 
