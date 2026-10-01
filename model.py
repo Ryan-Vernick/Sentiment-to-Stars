@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import regressionhead
+import config
 
 class SentimentRNN(nn.Module):
     def __init__(self, vocab_size, embed_size, hidden_size, output_size):
@@ -16,8 +17,8 @@ class SentimentRNN(nn.Module):
         out = self.head(out[:, -1, :])
         return out
 
-vocab_size = 50000 + 1 # !!!
-embed_size = 128 # !!!
-hidden_size = 128 # !!!
-output_size = 2 # !!!
+vocab_size = config.vocab_size
+embed_size = config.embed_size
+hidden_size = config.hidden_size
+output_size = config.output_size
 model = SentimentRNN(vocab_size, embed_size, hidden_size, output_size)

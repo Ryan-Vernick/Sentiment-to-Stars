@@ -1,7 +1,7 @@
 import RNN_training
 import torch
-# from data_loader import test_loader
-# from RNN_training import modell
+from data_loader import test_loader
+from RNN_training import modell
 
 modell.eval()
 correct = 0
