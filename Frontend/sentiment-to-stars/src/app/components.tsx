@@ -95,7 +95,6 @@ export function OneStar({fillLevel, computedRating}: {fillLevel: number, compute
 export function DisplayStars({appState}: {appState: appStateType}) {
     const numStars = appState.numStars
     const scale = appState.scale
-    const setScale = appState.setScale
     const computedRating = appState.computedRating
     const numericalRating = computedRating ? Math.round((computedRating * scale) * 2) / 2 : 0
     const numFilled = computedRating ? computedRating * numStars : numStars
@@ -111,28 +110,10 @@ export function DisplayStars({appState}: {appState: appStateType}) {
         if (fillLeft < 0) fillLeft = 0
     }
 
-    const [displayScale, setDisplayScale] = useState<string | number>(scale)
-    const updateScale = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target) {
-            const newVal = parseInt(event.target.value)
-            if (isNaN(newVal)) {
-                setDisplayScale('')
-            }
-            // setDisplayScale('')
-            if (newVal >= 1) {
-                setScale(newVal)
-                setDisplayScale(newVal)
-            }
-            else {
-                setScale(numStars)
-            }
-        }
-    }
-
     return (
         <div className={styles.results}>
             {/* <h3 className={styles.numericalRating}>{numFilled}/{numStars}</h3> */}
-            <h3 className={styles.numericalRating}>{computedRating ? numericalRating : '?'}/<input className={styles.scaleInput} type='number' id='numScale' name='numScale' min={1} value={displayScale} onChange={updateScale} onBlur={() => {if (displayScale != scale) setDisplayScale(scale)}}/></h3>
+            <h3 className={styles.numericalRating}>{computedRating ? numericalRating : '?'}/{scale}</h3>
             <div className={styles.stars}>
                 {stars}
             </div>
