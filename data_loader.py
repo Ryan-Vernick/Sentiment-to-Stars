@@ -9,9 +9,6 @@ with open('./vocab_jsons/vocab_1.json', 'r') as f: # !!!
 
 random.shuffle(train_data) # overkill but just to be sure
 
-def pad(text):
-    return text + [0] * (2475 - len(text))
-
 with open('./vocab_jsons/vocab_2.json', 'r') as f: # !!!
     test_data = json.load(f)
 
@@ -31,5 +28,5 @@ class SentimentDataset(Dataset):
 train_dataset = SentimentDataset(train_data)
 test_dataset = SentimentDataset(test_data)
 
-train_loader = DataLoader(train_dataset, batch_size=config.batch_size, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=config.batch_size, shuffle=False)
 test_loader = DataLoader(test_dataset, batch_size=config.batch_size, shuffle=False)

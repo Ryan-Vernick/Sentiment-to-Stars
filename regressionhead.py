@@ -10,7 +10,7 @@ class RegressionHead(nn.Module):
         #Layers of the onion, using // since i dont know the size of the hidden_dim
         self.fc1 = nn.Linear(hidden_dim, hidden_dim // 2)
         self.fc2 = nn.Linear(hidden_dim // 2, hidden_dim // 4)
-        self.fc3 = nn.Linear(hidden_dim // 4, 1)
+        self.fc3 = nn.Linear(hidden_dim // 4, 5)
 
         self.relu = nn.ReLU()
 
@@ -23,7 +23,6 @@ class RegressionHead(nn.Module):
         h = self.relu(self.fc1(x))
         h = self.relu(self.fc2(h))
 
-        # (batch_size, 1), values in [0, 1]
-        output = self.sigmoid(self.fc3(h))
-
+        # (batch_size, 5), values in [0, 1]
+        output = self.fc3(h)
         return output
