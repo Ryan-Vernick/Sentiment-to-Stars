@@ -120,27 +120,7 @@
 
 .numericalRating {
     font-size: 42px;
-}
-
-.scaleInput {
-    field-sizing: content;
-    min-width: 0.75em;
-    border-radius: 8px;
-    padding: 4px 0 0 4px;
-    margin-left: 1px;
-    border: solid 2px #cfe0e4 ;
-    font: var(--league-spartan);
-    font-size: 40px;
-    color: #2D6570;
-
-    display: inline-flex; 
-    align-items: center;
-
-    transition: border 0.25s;
-}
-
-.scaleInput:hover {
-    border: solid 2px #76A5AF;
+    padding-bottom: 2px;
 }
 
 .results {
