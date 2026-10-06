@@ -1,6 +1,6 @@
 import re
 from transformers import AutoTokenizer
-from torch import Tensor
+from transformers.tokenization_utils_base import BatchEncoding
 
 amazon_links = r'https?://(?:[a-z0-9-]+\.)*amazon\.[a-z.]{2,6}/(?:[^/\s]+/)?(?:dp|gp/(?:product|aw/d))/[A-Z0-9]{10}(?:[/?].*)?'
 edits_or_unecessary = r'-{7,}.*?-{7,}|>{2,}'
@@ -13,7 +13,7 @@ excessive_hyphens = r'-{3,6}'
 # tokenizer = Tokenizer.from_file("tokenizer.json")
 tokenizer = AutoTokenizer.from_pretrained("model")
 
-def tokenize(input: str) -> Tensor:
+def tokenize(input: str) -> BatchEncoding:
     """
     Tokenizes some input
     """

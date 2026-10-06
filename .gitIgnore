@@ -2,3 +2,4 @@ vocab.json
 **/__pycache__/
 vocab_jsons/
 .vscode/
+model/

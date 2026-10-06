@@ -23,7 +23,7 @@ def predict():
     model_input = tokenize(user_input)
 
     with torch.inference_mode():
-        prediction = model(model_input).squeeze().item()
+        prediction = model(**model_input).squeeze().item()
     return jsonify({'result': prediction})
 
 if __name__ == '__main__':
