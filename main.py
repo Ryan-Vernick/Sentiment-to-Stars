@@ -10,7 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 PROJECT_DIR = Path(__file__).resolve().parent
-model = joblib.load(PROJECT_DIR / 'currentModel.pkl')
+model = joblib.load(PROJECT_DIR / 'model/currentModel.pkl')
 model.eval()
 
 @app.route('/predict', methods=['POST'])
@@ -20,8 +20,7 @@ def predict():
     if not isinstance(user_input, str) or not user_input.strip():
         return jsonify({'error': 'Enter review text before generating a rating.'}), 400
 
-    token_ids = tokenize(user_input)
-    model_input = torch.tensor([token_ids], dtype=torch.long)
+    model_input = tokenize(user_input)
 
     with torch.inference_mode():
         prediction = model(model_input).squeeze().item()
