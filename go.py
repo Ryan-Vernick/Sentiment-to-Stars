@@ -1,22 +1,12 @@
-import RNN_training
-import torch
-from data_loader import test_loader
-from RNN_training import modell
-from joblib import Parallel, delayed
-import joblib
+from data_loader import load_data
+from RNN_training import train_model, test_model
+from joblib import dump
 
-modell.eval()
-correct = 0
-total = 0
-with torch.no_grad():
-    for texts, labels in test_loader:
-        outputs = modell(texts)
-        _, predicted = torch.max(outputs.data, 1)
-        total += labels.size(0)
-        correct += (predicted == labels).sum().item()
-
-accuracy = 100 * correct / total
-print(f'Accuracy: {accuracy:.2f}%')
-
-# Save the model as a pickle in a file
-joblib.dump(modell, 'currentModel.pkl')
+print("Loading data...")
+train, test, _ = load_data()
+print("Starting training...")
+model = train_model(train_loader=train, output=True)
+print("Testing model...")
+test_model(model, test_loader=test, output=True)
+print("Saving model...")
+dump(model, 'currentModel.pkl')
