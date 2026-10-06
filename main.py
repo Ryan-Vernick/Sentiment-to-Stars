@@ -22,8 +22,17 @@ def predict():
 
     model_input = tokenize(user_input)
 
+
     with torch.inference_mode():
-        prediction = model(model_input).squeeze().item()
+        logits = model(**model_input).logits
+        class_probabilities = torch.softmax(logits, dim=-1)
+        class_ratings = torch.arange(
+            1,
+            logits.shape[-1] + 1,
+            device=logits.device,
+            dtype=logits.dtype,
+        )
+        prediction = (class_probabilities * class_ratings).sum(dim=-1).div(logits.shape[-1]).item()
     return jsonify({'result': prediction})
 
 if __name__ == '__main__':
